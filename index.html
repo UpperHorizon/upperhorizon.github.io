@@ -422,6 +422,7 @@
             await fetch('https://api.workranked.com/ai-web-design', {
               method: 'POST',
               body: JSON.stringify({ prompt, token, v: 2 }),
+              headers: { 'content-type': 'application/json' },
             })
           ).json();
 
