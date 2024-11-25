@@ -34,21 +34,22 @@
     <style type="text/tailwindcss">
       @layer components {
         .input {
-          @apply border rounded-xl p-2;
+          @apply border rounded-xl p-2 hover:border-orange-700;
         }
 
         .btn {
-          @apply bg-orange-300 px-6 py-4 rounded-xl font-bold border-none;
+          @apply bg-orange-300 hover:bg-orange-400 transition px-6 py-4 rounded-xl font-bold border-none;
         }
       }
     </style>
   </head>
 
   <body class="outfit">
+    <!-- Hero -->
     <div
       class="flex flex-wrap items-center bg-gradient-to-br from-white to-emerald-50"
     >
-      <div class="basis-full lg:basis-6/12 p-20 space-y-6">
+      <div class="basis-full lg:basis-6/12 p-16 lg:p-20 space-y-6">
         <h1 class="text-5xl font-bold aleo">
           <span class="text-emerald-700">AI</span> Web Design Generator for
           <span
@@ -60,10 +61,11 @@
 
         <p class="text-xl">
           Easily find inspiration/ideas, quickly try out different
-          concepts/styles, and deliver high-quality designs in less time.
+          concepts/styles, and create high-quality designs/graphics in less
+          time.
         </p>
 
-        <div class="flex space-x-8 items-center">
+        <div class="flex flex-wrap items-center">
           <a
             href="mailto:hello@upperhorizon.com"
             class="btn inline-block text-xl"
@@ -71,7 +73,7 @@
           >
           <a
             href="https://upperhorizon.com/waitlist-wd?utm_campaign=github-page"
-            class="text-xl text-emerald-700"
+            class="text-xl text-emerald-700 px-6 py-4"
             >Join Waitlist</a
           >
         </div>
@@ -80,54 +82,165 @@
       <div class="basis-full lg:basis-6/12">
         <div class="flex flex-wrap">
           <div class="basis-full lg:basis-6/12">
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/1.png?raw=true"
-            />
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/1.png?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/1.png?raw=true"
+            /></a>
           </div>
           <div class="basis-full lg:basis-6/12">
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/2.webp?raw=true"
-            />
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/2.webp?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/2.webp?raw=true"
+            /></a>
           </div>
           <div class="basis-full lg:basis-6/12">
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/3.webp?raw=true"
-            />
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/3.webp?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/3.webp?raw=true"
+            /></a>
           </div>
           <div class="basis-full lg:basis-6/12">
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/4.webp?raw=true"
-            />
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/4.webp?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/4.webp?raw=true"
+            /></a>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Demo -->
+    <div class="p-16 lg:p-20">
+      <h2 class="text-5xl font-bold aleo mb-8">
+        Try out the
+        <span
+          class="text-white bg-gradient-to-r from-emerald-900 to-emerald-500 px-4 py-2 rounded-xl"
+          >demo</span
+        >
+      </h2>
+
+      <div class="flex flex-wrap" id="generations">
+        <div class="basis-full lg:basis-4/12 p-4">
+          <a target="_blank"><img id="gen-0" /></a>
+        </div>
+        <div class="basis-full lg:basis-4/12 p-4">
+          <a target="_blank"><img id="gen-1" /></a>
+        </div>
+        <div class="basis-full lg:basis-4/12 p-4">
+          <a target="_blank"><img id="gen-2" /></a>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap">
+        <div class="basis-full lg:basis-6/12 p-10">
+          <div
+            class="px-6 py-4 text-white hidden rounded-xl mb-4"
+            id="message"
+          ></div>
+
+          <form id="demo">
+            <label class="block" for="secret">Secret Token</label>
+            <input
+              class="block input w-full mb-1"
+              id="secret"
+              type="text"
+              required
+            />
+            <p class="text-sm text-gray-700 mb-4">
+              Don't have access yet?
+              <a href="mailto:hello@upperhorizon.com" class="text-emerald-700"
+                >Email me</a
+              >
+              and I'll give you a token.
+            </p>
+
+            <label class="block" for="prompt">Text Prompt</label>
+            <textarea
+              class="block input w-full mb-1"
+              id="prompt"
+              rows="3"
+              required
+            ></textarea>
+            <p class="text-sm text-gray-700 mb-4">
+              For the best results, choose one of the example prompts or try
+              formatting your prompt similarly.
+            </p>
+
+            <button type="submit" class="btn text-lg w-full">Generate</button>
+          </form>
+
+          <div class="mt-4 space-y-1">
+            <p>
+              I trained this text-to-image AI model on a custom dataset to
+              specifically generate website designs.
+            </p>
+            <p>
+              Have an idea or suggestion? Provide feedback directly to
+              <a href="mailto:hello@upperhorizon.com" class="text-emerald-700"
+                >me (the developer)</a
+              >.
+            </p>
+            <p>
+              Note: this setup/model is experimental and I'm a solo dev working
+              on it; so if you encounter any bugs/errors, let me know and please
+              try again later...
+            </p>
+          </div>
+        </div>
+
+        <div class="basis-full lg:basis-6/12 p-10">
+          <p class="text-lg text-orange-700 mb-2">Pick an example</p>
+          <div id="examples" class="space-y-5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bullets -->
     <div
       class="flex flex-wrap items-center bg-gradient-to-tr from-emerald-900 to-emerald-700 text-white"
     >
-      <div class="basis-full lg:basis-6/12 p-20">
+      <div class="basis-full lg:basis-6/12 p-16 lg:p-20">
         <div class="flex space-x-2">
           <div class="basis-9/12">
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/5.webp?raw=true"
-            />
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/5.webp?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/5.webp?raw=true"
+            /></a>
           </div>
           <div class="basis-3/12 space-y-2">
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/6.png?raw=true"
-            />
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/7.png?raw=true"
-            />
-            <img
-              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/8.webp?raw=true"
-            />
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/6.png?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/6.png?raw=true"
+            /></a>
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/7.png?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/7.png?raw=true"
+            /></a>
+            <a
+              href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/8.webp?raw=true"
+              target="_blank"
+              ><img
+                src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/8.webp?raw=true"
+            /></a>
           </div>
         </div>
       </div>
 
-      <div class="basis-full lg:basis-6/12 p-20 space-y-6">
+      <div class="basis-full lg:basis-6/12 p-16 lg:p-20 space-y-6">
         <h2 class="text-4xl font-bold aleo">
           <span class="text-emerald-300">Engaging</span>, User-friendly,
           Visually Appealing
@@ -152,7 +265,8 @@
       </div>
     </div>
 
-    <div class="p-20">
+    <!-- Showcase -->
+    <div class="p-16 lg:p-20">
       <h2
         class="text-5xl font-bold aleo text-center mb-20 bg-gradient-to-r bg-clip-text text-transparent from-emerald-900 to-emerald-400"
       >
@@ -161,56 +275,198 @@
 
       <div class="flex flex-wrap">
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (6).webp?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (6).webp?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (6).webp?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/img.png?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/img.png?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/img.png?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (8).webp?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (8).webp?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (8).webp?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (9).webp?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (9).webp?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (9).webp?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (12).webp?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (12).webp?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (12).webp?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (11).webp?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (11).webp?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (11).webp?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (13).webp?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (13).webp?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (13).webp?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (15).webp?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (15).webp?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (15).webp?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (5) copy.png?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (5) copy.png?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image (5) copy.png?raw=true"
+          /></a>
         </div>
         <div class="basis-full lg:basis-4/12 p-2">
-          <img
-            src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image copy.png?raw=true"
-          />
+          <a
+            href="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image copy.png?raw=true"
+            target="_blank"
+            ><img
+              src="https://github.com/UpperHorizon/upperhorizon.github.io/blob/b18f523e3ca28e7e81595ae645964e4766a43c32/image copy.png?raw=true"
+          /></a>
         </div>
       </div>
     </div>
+
+    <script>
+      const $ = (selector) => document.querySelector(selector);
+      const $$ = (selector) => document.querySelectorAll(selector);
+      const state = {};
+
+      const prompts = [
+        'header, 1920px, award-winning, community; clean, simple, 2-column, minimal, playful, pastel vibes, vector illustration of graph, icons, rounded buttons, soft shadows, colors: yellow, white, black; reporting analytics, data dashboards, employee engagement, trends, recognition, free trial, peer feedback, integrations, Slack, Microsoft Teams, custom rewards',
+        'header, 1920px, award winning, food; modern, eco friendly, clean design, subtle divider lines, sans serif fonts, minimalistic, nature themed, images of jars and leaves, earthy tones, colors: olive green, cream, soft brown; sustainability, eco friendly, packaging, recycling, food waste, environmental protection, honey products, innovation, conservation, community, recipes, composting, green initiatives',
+        'header, 1920px, detailed, award-winning, e-commerce; natural textures, minimalist, neutral tones, modern, clean layout, Scandinavian design, earthy vibes, subtle elegance, images: cozy interiors, muted beige, warm brown, soft grey; rug collections, classic styles, heirloom, new arrivals, sale, samples, custom, cart, wishlist, sustainable, B Corporation, home decor, interior design, online shopping',
+        '1920px, award-winning, detailed; purple background, bold sans-serif text, minimalist, two-column layout, app store buttons, centered elements, playful, modern, clean design, colors: pastel purple, white, black; templates, marketplace, pricing, download, connect socials, monetize, audience building, analytics, creators, influencers, small businesses, e-commerce, mobile app, community',
+        'header, homepage, 1920px, award-winning, shopping; minimalist, dark mode, flat vector graphic of film camera, tech-focused, monochrome elements, black, orange accents, modern design, futuristic vibe; cinematic gear, motor upgrade, camera control, training app, testimonials, demos, creative filmmaking, film production technology, wireless control, virtual production tools, third axis control',
+        'header, homepage, 1920px, detailed, award-winning, non-profit; classical, grayscale, academic theme, clean design, serif fonts, overlapping images, geometric accents, neutral tones, colors: muted teal, brick red, classic tan; research programs, antitrust, consumer protection, data security, privacy, financial regulation, innovation, intellectual property, telecommunications, publications, events, policy debates',
+        'homepage, 1920px, highly detailed; colorful futuristic, vibrant neon green, deep purple, holographic elements, tech-themed, 3D graphics of phones and rings, single bold column, minimal text, playful, modern, floating objects, abstract shapes; financial services, money management, peer-to-peer payments, stock investment, discounts, banking apps, prepaid debit cards, tax filing',
+        'homepage, 1920px, tech startup, detailed, space; industrial space theme, scientific, modern, technical vibes, large serif text, colors: deep black, cosmic gray, bright red accents; space exploration, robotics, technology development, scientific research, missions, educational resources, planetary studies, climate change',
+        'header, homepage, 1920px, detailed, award-winning, best visuals; sleek, minimalist, dark mode, monochrome, modern, tech-themed, large hero image, aesthetic, 2-column layout, rounded buttons, seamless transitions, bold typography, dynamic, colors: black, white, violet accents; creative collaboration, media sharing, feedback tracking, cloud-based platform, video editing, production workflow, file transfer',
+      ];
+
+      $('#examples').innerHTML = prompts
+        .map(
+          (text) =>
+            `<textarea class="input block w-full h-8 text-sm" role="button">${text}</textarea>`,
+        )
+        .join('\n');
+      $$('#examples textarea').forEach((el) => {
+        el.addEventListener('click', () => {
+          $('#prompt').value = el.value;
+        });
+      });
+
+      $('#secret').value = localStorage.getItem('wdSecret');
+      $('#prompt').value = prompts[0];
+
+      const message = $('#message');
+      const types = { success: '#047857', error: '#c2410c' };
+      const setMessage = (text, type = 'success') => {
+        if (text) {
+          message.innerText = text;
+          message.style.display = 'block';
+          message.style.backgroundColor = types?.[type];
+        } else {
+          message.display = 'none';
+        }
+      };
+
+      const submit = $('#demo [type="submit"]');
+      const generations = $('#generations');
+      const errorMessage = `Sorry, something went wrong. Please email me and try again later...`;
+
+      $('#demo').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        try {
+          submit.innerText = 'Loading...';
+          submit.disabled = true;
+          setMessage('Loading...');
+          $$('#generations img').forEach((el) => el.removeAttribute('src'));
+
+          const token = $('#secret').value;
+          const prompt = $('#prompt').value;
+          localStorage.setItem('wdSecret', token);
+
+          const result = await (
+            await fetch('https://api.workranked.com/ai-web-design', {
+              method: 'POST',
+              body: JSON.stringify({ prompt, token, v: 2 }),
+            })
+          ).json();
+
+          const keys = result?.data?.keys;
+          const maxAttempts = 12;
+
+          if (keys) {
+            let successCount = 0;
+            for (let i = 0; i < keys.length; i++) {
+              for (let attempt = 0; attempt < maxAttempts; attempt++) {
+                setMessage(
+                  `Waiting for image ${i + 1} (attempt ${attempt + 1} of ${maxAttempts})...`,
+                );
+                await new Promise((res) => setTimeout(res, 10_000));
+
+                const url = `https://upper-horizon-public.s3.us-east-2.amazonaws.com/wd-demo/${keys[i]}.webp`;
+                const image = await fetch(url);
+                if (image.ok) {
+                  $(`#gen-${i}`).src = url;
+                  $(`#gen-${i}`).parentElement.href = url;
+                  successCount += 1;
+                  break;
+                }
+              }
+            }
+            if (successCount === keys.length) {
+              setMessage(`All images generated successfully.`);
+            } else {
+              setMessage(errorMessage, 'error');
+            }
+          } else if (result?.data?.balance < 0) {
+            setMessage(
+              `You don't have any more balance left for AI generations.`,
+              'error',
+            );
+          } else {
+            setMessage(errorMessage, 'error');
+          }
+        } catch {
+          setMessage(errorMessage, 'error');
+        } finally {
+          submit.innerText = 'Generate';
+          submit.disabled = false;
+        }
+      });
+    </script>
   </body>
 </html>
