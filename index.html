@@ -86,7 +86,7 @@
     </div>
 
     <!-- Demo -->
-    <div class="p-16 lg:p-20">
+    <div class="p-16 lg:p-20" id="try">
       <h2 class="text-5xl font-bold aleo mb-8">
         Try out the
         <span class="text-white bg-gradient-to-r from-emerald-900 to-emerald-500 px-4 py-2 rounded-xl">demo</span>
@@ -312,7 +312,7 @@
         )
         .join('\n');
 
-      $('#secret').value = localStorage.getItem('wdSecret');
+      $('#secret').value = localStorage.getItem('wdSecret') || (new URLSearchParams(location.search)).get('token');
       $('#prompt').value = prompts[0];
 
       const message = $('#message');
