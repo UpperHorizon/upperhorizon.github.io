@@ -312,7 +312,7 @@
         )
         .join('\n');
 
-      $('#secret').value = localStorage.getItem('wdSecret') || (new URLSearchParams(location.search)).get('token');
+      $('#secret').value = (new URLSearchParams(location.search)).get('token') || localStorage.getItem('wdSecret');
       $('#prompt').value = prompts[0];
 
       const message = $('#message');
